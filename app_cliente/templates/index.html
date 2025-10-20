@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo_pagina }}</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 20px; 
+            background-color: #f4f4f4;
+        }
+        h1 { 
+            color: #007bff; 
+            border-bottom: 2px solid #007bff; 
+            padding-bottom: 10px; 
+        }
+
+        /* Estilos de la tabla (Se mantienen los mismos) */
+        .tabla-productos {
+            width: 100%;
+            border-collapse: collapse; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            margin-top: 20px;
+        }
+        .tabla-productos th, .tabla-productos td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .tabla-productos th {
+            background-color: #007bff;
+            color: white;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+        .tabla-productos tr:hover {
+            background-color: #f1f1f1; 
+        }
+        
+        /* Estos estilos ya no se usan, pero se pueden quedar */
+        .precio {
+            color: #28a745; 
+            font-weight: bold;
+        }
+        .stock-bajo {
+            color: #dc3545; 
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>{{ titulo_pagina }} De Dulce Gomez 5ºJ</h1>
+    <p>Lista de nuestros clientes registrados:</p>
+
+    {% if clientes %}
+        <table class="tabla-productos">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Teléfono</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for cliente in clientes %}
+                <tr>
+                    <td>{{ cliente.nombre }}</td>
+                    <td>{{ cliente.edad }}</td>
+                    <td>{{ cliente.telefono }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay clientes disponibles en este momento.</p>
+    {% endif %}
+
+</body>
+</html>
